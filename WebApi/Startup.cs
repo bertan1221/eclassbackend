@@ -16,7 +16,7 @@ namespace WebApi
         {
             ConfigureAuth(app);
 
-            var authority = "https://{yourOktaDomain}/oauth2/default";
+            var authority = "https://dev-460437.okta.com/oauth2/default";
 
             var configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(
               authority + "/.well-known/openid-configuration",

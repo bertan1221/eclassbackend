@@ -7,13 +7,13 @@ namespace WebApi.Models
 {
     public class CheckoutModel
     {
-        public List<CourseModel> CourseModels { get; set; }
+        public List<CourseModel> items { get; set; }
 
-        public double TotalPrice
+        public double price
         {
             get
             {
-                return CourseModels.Sum(x => x.Price * x.Quantity);
+                return items.Sum(x => x.price * x.quantity);
             }
         }
 
@@ -22,10 +22,15 @@ namespace WebApi.Models
 
     public class CourseModel
     {
-        public string CourseName { get; set; }
+        public int id { get; set; }
 
-        public double Price { get; set; }
+        public string title { get; set; }
 
-        public int Quantity { get; set; }
+
+        public string thumbnail_url { get; set; }
+
+        public double price { get; set; }
+
+        public int quantity { get; set; }
     }
 }

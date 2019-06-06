@@ -51,26 +51,34 @@ namespace Services
             _dbContext.SaveChanges();
         }
 
-        public bool Checkout(List<Course> courses, string StudentEmail)
+        public bool Checkout(List<Course> courses, List<Course> newCourses, string StudentEmail)
         {
             var student = _dbContext.Students.FirstOrDefault(x => x.Email.ToLower() == StudentEmail.ToLower());
 
-            if(student == null)
+            if (student == null)
             {
-                return false;
+                student = _dbContext.Students.FirstOrDefault();
             }
 
-            foreach (var course in courses)
+            foreach (var course in newCourses)
+            {
+                _dbContext.Courses.Add(course);
+            }
+
+            var newList = courses.Concat(newCourses).ToList();
+
+            foreach (var course in newList)
             {
                 var courseStudent = new CourseStudent()
                 {
                     CourseId = course.Id,
-                    StudentId = student.Id
+                    StudentId = student.Id,
+                    
                 };
 
                 _dbContext.CourseStudents.Add(courseStudent);
             }
-
+            _dbContext.SaveChanges();
             return true;
         }
     }

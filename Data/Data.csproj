@@ -49,6 +49,10 @@
   <ItemGroup>
     <Compile Include="EClassroomDataContext.cs" />
     <Compile Include="IDbContext.cs" />
+    <Compile Include="Migrations\201906061925226_quantity.cs" />
+    <Compile Include="Migrations\201906061925226_quantity.Designer.cs">
+      <DependentUpon>201906061925226_quantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +65,11 @@
       <Project>{dc9706d6-c259-49cb-b04d-4fad8372ed7e}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906061925226_quantity.resx">
+      <DependentUpon>201906061925226_quantity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

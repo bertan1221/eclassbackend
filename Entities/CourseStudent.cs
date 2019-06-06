@@ -23,6 +23,7 @@ namespace Entities
 
         public virtual Course Course { get; set; }
 
+        public double Quantity { get; set; }
 
     }
 }
